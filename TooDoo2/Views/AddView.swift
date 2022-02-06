@@ -10,6 +10,7 @@ import SwiftUI
 // View for adding a new task item
 struct AddView: View {
     
+    @Environment(\.presentationMode) var presentationMode // Monitor where application view is
     @EnvironmentObject var listViewModel: ListViewModel // Retrieve Environment Object
     @State var textFieldText: String = "" // Variable to hold new task name information
     
@@ -37,12 +38,23 @@ struct AddView: View {
             }
             .padding(14) // Padding for entire view
         }
-        .navigationTitle("Add New Task") // Title of page
+        .navigationTitle("Add New Task...") // Title of page
     }
     
     // Save button function
     func saveButtonPressed() {
-        
+        if textBlank() { // Will only run if the field is not blank
+            listViewModel.addItem(title: textFieldText) // Add item from textfield
+            presentationMode.wrappedValue.dismiss() // Return back to list using presentationMode
+        }
+    }
+    
+    // Function to check to see if text is entered in task field
+    func textBlank() -> Bool {
+        if textFieldText.count < 1 { // If text field is blank, return false, else reuturn true
+            return false
+        }
+        return true
     }
     
 }
