@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ListView: View {
     
-    // Array for task items
-    @State var items: [String] = [
-        "Task 1",
-        "Task 2",
-        "Task 3"
+    // Array for task items; Contains data from the ItemModel Swift file
+    @State var items: [ItemModel] = [
+        ItemModel(title: "Task 1", isCompleted: false),
+        ItemModel(title: "Task 2", isCompleted: true),
+        ItemModel(title: "Task 3", isCompleted: false),
     ]
     
     var body: some View {
         List { // Creates a list object
-            ForEach(items, id: \.self, content: { item in // Loop to pull in task items specified in the items array
-                ListRowView(title: item) // Add item to task list (repeats in loop)
+            ForEach(items, content: { item in // Loop to pull in task items specified in the items array
+                Text("TEMP")
+                //ListRowView(title: item) // Add item to task list (repeats in loop)
             })
         }
         .listStyle(PlainListStyle()) // Change list style to default android look
