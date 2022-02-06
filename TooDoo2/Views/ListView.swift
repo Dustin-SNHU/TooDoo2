@@ -10,7 +10,7 @@ import SwiftUI
 struct ListView: View {
     var body: some View {
         List { // Creates a list object
-            ListRowView() // Extracted structure for to do list row
+            ListRowView(title: "Title") // Extracted structure for to do list row
         }
         .navigationTitle("TooDoo2") // Navigation title with application name
     }

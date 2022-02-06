@@ -9,10 +9,13 @@ import SwiftUI
 
 // ListRowView Structure
 struct ListRowView: View {
+    
+    let title: String
+    
     var body: some View {
         HStack { // Horizontal stack
             Image(systemName: "checkmark.circle") // Insert check mark next to task item
-            Text("Task 1") // Temporary text for task item
+            Text(title) // Text for task item
             Spacer() // Pushes text to the left of the screen
         }
     }
@@ -20,6 +23,6 @@ struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView()
+        ListRowView(title: "Title")
     }
 }
