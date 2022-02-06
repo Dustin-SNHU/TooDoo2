@@ -15,6 +15,11 @@ struct ListView: View {
         List { // Creates a list object
             ForEach(listViewModel.items) { item in // Loop to pull in task items specified in the items array
                 ListRowView(item: item) // Pass each ListRowView item as the loop loops
+                    .onTapGesture { // Add tap gesture
+                        withAnimation(.linear) { // Animate tapping a task item
+                            listViewModel.updateItem(item: item) // Invoke updateItem function
+                        }
+                    }
             }
             .onDelete(perform: listViewModel.deleteItem) // Call deleteItem function when onDelete is invoked
             .onMove(perform: listViewModel.moveItem) // Call moveItem function when onMove is invoked

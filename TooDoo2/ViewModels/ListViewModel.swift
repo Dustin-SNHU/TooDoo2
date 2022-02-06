@@ -46,4 +46,10 @@ class ListViewModel: ObservableObject {
         items.append(newItem) // Add new item
     }
     
+    // Update item function
+    func updateItem(item: ItemModel) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) { // Find first index where an item resides; will match a unique key associated wit that item
+            items[index] = item.updateCompleted() // Change the status of the item that is selected
+        }
+    }
 }
