@@ -10,6 +10,7 @@ import SwiftUI
 // View for adding a new task item
 struct AddView: View {
     
+    @EnvironmentObject var listViewModel: ListViewModel // Retrieve Environment Object
     @State var textFieldText: String = "" // Variable to hold new task name information
     
     var body: some View {
@@ -23,9 +24,7 @@ struct AddView: View {
                     .cornerRadius(10) // Create corner radius
                 
                 // Save button
-                Button(action: {
-                    
-                }, label: {
+                Button(action:saveButtonPressed, label: {
                     
                     // Save button
                     Text("Save".uppercased())
@@ -40,6 +39,12 @@ struct AddView: View {
         }
         .navigationTitle("Add New Task") // Title of page
     }
+    
+    // Save button function
+    func saveButtonPressed() {
+        
+    }
+    
 }
 
 struct AddView_Previews: PreviewProvider {
@@ -47,6 +52,6 @@ struct AddView_Previews: PreviewProvider {
         NavigationView {
             AddView()
         }
-        .preferredColorScheme(.light)
+        .environmentObject(ListViewModel()) // Allow preview of ListViewModel
     }
 }
