@@ -18,9 +18,11 @@ struct ListView: View {
     
     var body: some View {
         List { // Creates a list object
-            ForEach(items, content: { item in // Loop to pull in task items specified in the items array
+            ForEach(items) { item in // Loop to pull in task items specified in the items array
                 ListRowView(item: item) // Pass each ListRowView item as the loop loops
-            })
+            }
+            .onDelete(perform: deleteItem) // Call deleteItem function when onDelete is invoked
+            .onMove(perform: moveItem) // Call moveItem function when onMove is invoked
         }
         .listStyle(PlainListStyle()) // Change list style to default android look
         .navigationTitle("TooDoo2") // Navigation title with application name
@@ -29,6 +31,17 @@ struct ListView: View {
             trailing: NavigationLink("Add", destination: AddView()) // Add button which moves to the AddView view
         )
     }
+    
+    // Delete item function
+    func deleteItem(indexSet: IndexSet) {
+        items.remove(atOffsets: indexSet) // Index where item is deleted from
+    }
+    
+    // Move item function
+    func moveItem(from: IndexSet, to: Int) {
+        items.move(fromOffsets: from, toOffset: to) // Move actions for Offests
+    }
+    
 }
 
 // Preview Provider
