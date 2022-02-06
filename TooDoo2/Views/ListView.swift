@@ -9,12 +9,19 @@ import SwiftUI
 
 struct ListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List { // Creates a list object
+            ListRowView() // Extracted structure for to do list row
+        }
+        .navigationTitle("TooDoo2") // Navigation title with application name
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        NavigationView { // Navigation view handler for the application preview
+            ListView()
+        }
     }
 }
+
+

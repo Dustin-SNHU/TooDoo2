@@ -11,7 +11,9 @@ import SwiftUI
 struct TooDoo2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView { // View controlling navigation between screens
+                ListView()
+            }
         }
     }
 }

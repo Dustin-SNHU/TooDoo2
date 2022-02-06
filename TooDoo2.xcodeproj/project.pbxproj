@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B2E4B0227B05A9B0073770D /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E4B0127B05A9B0073770D /* ListRowView.swift */; };
 		4BD6FF7B27B0271F00E870A0 /* TooDoo2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6FF7A27B0271F00E870A0 /* TooDoo2App.swift */; };
 		4BD6FF7F27B0272000E870A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6FF7E27B0272000E870A0 /* Assets.xcassets */; };
 		4BD6FF8227B0272000E870A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6FF8127B0272000E870A0 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B2E4B0127B05A9B0073770D /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		4BD6FF7727B0271F00E870A0 /* TooDoo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooDoo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD6FF7A27B0271F00E870A0 /* TooDoo2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooDoo2App.swift; sourceTree = "<group>"; };
 		4BD6FF7E27B0272000E870A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				4BD6FFA727B0568200E870A0 /* ListView.swift */,
+				4B2E4B0127B05A9B0073770D /* ListRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				4BD6FF7B27B0271F00E870A0 /* TooDoo2App.swift in Sources */,
 				4BD6FFA827B0568200E870A0 /* ListView.swift in Sources */,
+				4B2E4B0227B05A9B0073770D /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
