@@ -19,8 +19,7 @@ struct ListView: View {
     var body: some View {
         List { // Creates a list object
             ForEach(items, content: { item in // Loop to pull in task items specified in the items array
-                Text("TEMP")
-                //ListRowView(title: item) // Add item to task list (repeats in loop)
+                ListRowView(item: item) // Pass each ListRowView item as the loop loops
             })
         }
         .listStyle(PlainListStyle()) // Change list style to default android look
