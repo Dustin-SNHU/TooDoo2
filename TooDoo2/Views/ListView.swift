@@ -26,11 +26,12 @@ struct ListView: View {
         .navigationTitle("TooDoo2") // Navigation title with application name
         .navigationBarItems( // Navigation items at top of application window
             leading: EditButton(), // Edit Button
-            trailing: NavigationLink("Add", destination: Text("Destination")) // Add button
+            trailing: NavigationLink("Add", destination: AddView()) // Add button which moves to the AddView view
         )
     }
 }
 
+// Preview Provider
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView { // Navigation view handler for the application preview
