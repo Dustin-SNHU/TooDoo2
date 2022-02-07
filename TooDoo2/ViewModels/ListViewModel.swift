@@ -10,8 +10,14 @@ import Foundation
 // Create class
 class ListViewModel: ObservableObject {
     
-    // Create blank array for new tasks
-    @Published var items: [ItemModel] = []
+    // Create array and call any time a change is made to the task list
+    @Published var items: [ItemModel] = [] {
+        didSet { // Call function anytime data is affected
+            saveItems() // Use saveItems function
+        }
+    }
+    
+    let itemsKey: String = "items_list" // Create unique key for the task list
     
     // Initialize variables
     init() {
@@ -21,13 +27,15 @@ class ListViewModel: ObservableObject {
     // getItems function
     func getItems() {
         
-        // Array contents
-        let newItems = [
-            ItemModel(title: "Task 1", isCompleted: false),
-            ItemModel(title: "Task 2", isCompleted: true),
-            ItemModel(title: "Task 3", isCompleted: false),
-        ]
-        items.append(contentsOf: newItems) // Add items to array
+        // Get tasks that are currently stored in UserDefaults
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey), // Get data from UserDefaults
+            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data) // Decode data from JSON if it exists
+        else {
+            return
+        }
+        
+        self.items = savedItems // Update Array with savedItems
     }
     
     // Delete item function
@@ -50,6 +58,13 @@ class ListViewModel: ObservableObject {
     func updateItem(item: ItemModel) {
         if let index = items.firstIndex(where: { $0.id == item.id }) { // Find first index where an item resides; will match a unique key associated wit that item
             items[index] = item.updateCompleted() // Change the status of the item that is selected
+        }
+    }
+    
+    // Save item function
+    func saveItems() {
+        if let encodedData = try? JSONEncoder().encode(items) { // Encode item from array into JSON format for saving to UserDefaults
+            UserDefaults.standard.set(encodedData, forKey: "itemsKey") // Save encoded items in array to UserDefaults using unique forKey
         }
     }
 }

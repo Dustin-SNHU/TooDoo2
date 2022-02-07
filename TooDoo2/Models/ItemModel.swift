@@ -8,7 +8,7 @@
 import Foundation
 
 // ItemModel Structure
-struct ItemModel: Identifiable {
+struct ItemModel: Identifiable, Codable { // Make ItemModel structure identifiable and codable
     let id: String // Generate ID String
     let title: String // Initialize title
     let isCompleted: Bool // Initialize boolean value to check for completed tasks
