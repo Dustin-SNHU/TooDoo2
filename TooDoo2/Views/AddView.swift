@@ -13,6 +13,7 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode // Monitor where application view is
     @EnvironmentObject var listViewModel: ListViewModel // Retrieve Environment Object
     @State var textFieldText: String = "" // Variable to hold new task name information
+    @State var textFieldDescription: String = "" // Variable to hold new description name information
     
     var body: some View {
         ScrollView { // Enables page scrolling on this page
@@ -20,6 +21,12 @@ struct AddView: View {
                 TextField("New Item...", text: $textFieldText) // Text field to enter a new task into
                     .padding(.horizontal) // Horizontal padding
                     .frame(height: 55) // Create framing for field
+                    .frame(maxWidth: .infinity) // Set frame width
+                    .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // Set light gray background color
+                    .cornerRadius(10) // Create corner radius
+                TextField("Description...", text: $textFieldDescription)
+                    .padding(.horizontal) // Horizontal padding
+                    .frame(height: 110) // Create framing for field
                     .frame(maxWidth: .infinity) // Set frame width
                     .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // Set light gray background color
                     .cornerRadius(10) // Create corner radius
@@ -44,7 +51,7 @@ struct AddView: View {
     // Save button function
     func saveButtonPressed() {
         if textBlank() { // Will only run if the field is not blank
-            listViewModel.addItem(title: textFieldText) // Add item from textfield
+            listViewModel.addItem(title: textFieldText, description: textFieldDescription) // Add item from textfield
             presentationMode.wrappedValue.dismiss() // Return back to list using presentationMode
         }
     }

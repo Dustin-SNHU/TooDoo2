@@ -49,8 +49,8 @@ class ListViewModel: ObservableObject {
     }
     
     // Add item function
-    func addItem(title: String) {
-        let newItem = ItemModel(title: title, isCompleted: false) // A new item will be added with title and isCompleted as being false
+    func addItem(title: String, description: String) {
+        let newItem = ItemModel(title: title, isCompleted: false, description: description) // A new item will be added with title and isCompleted as being false
         items.append(newItem) // Add new item
     }
     
