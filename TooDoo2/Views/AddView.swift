@@ -14,6 +14,7 @@ struct AddView: View {
     @EnvironmentObject var listViewModel: ListViewModel // Retrieve Environment Object
     @State var textFieldText: String = "" // Variable to hold new task name information
     @State var textFieldDescription: String = "" // Variable to hold new description name information
+    @State var datePickerDate: Date = Date() // Variable to hold date information
     
     var body: some View {
         ScrollView { // Enables page scrolling on this page
@@ -30,6 +31,10 @@ struct AddView: View {
                     .frame(maxWidth: .infinity) // Set frame width
                     .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // Set light gray background color
                     .cornerRadius(10) // Create corner radius
+                
+                // DatePicker button
+                DatePicker("Due Date:", selection: $datePickerDate, displayedComponents: [.date])
+                    .datePickerStyle(CompactDatePickerStyle()) // Use compact style
                 
                 // Save button
                 Button(action:saveButtonPressed, label: {
@@ -51,7 +56,7 @@ struct AddView: View {
     // Save button function
     func saveButtonPressed() {
         if textBlank() { // Will only run if the field is not blank
-            listViewModel.addItem(title: textFieldText, description: textFieldDescription) // Add item from textfield
+            listViewModel.addItem(title: textFieldText, description: textFieldDescription, date: datePickerDate) // Add item from textfield
             presentationMode.wrappedValue.dismiss() // Return back to list using presentationMode
         }
     }
