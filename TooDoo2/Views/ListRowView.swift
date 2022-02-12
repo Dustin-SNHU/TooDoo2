@@ -20,10 +20,15 @@ struct ListRowView: View {
                 Text(item.title) // Text for task item
                 Spacer() // Pushes text to the left of the screen
             }
-            Text(item.description)
-                .padding(.vertical, 0.5)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 14))
+            if item.description != "" {
+                Text(item.description)
+                    .padding(.vertical, 0.5)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+            }
+            else {
+            
+            }
         }
         
         .padding(.vertical, 8) // Padding between task items
@@ -35,7 +40,7 @@ struct ListRowView_Previews: PreviewProvider {
     
     // Temporary items used for preview testing
     static var item1 = ItemModel(title: "Task 1", isCompleted: false, description: "This is Task 1")
-    static var item2 = ItemModel(title: "Task 2", isCompleted: true, description: "This is Task 2")
+    static var item2 = ItemModel(title: "Task 2", isCompleted: true, description: "")
     
     // View for both temporary items
     static var previews: some View {
